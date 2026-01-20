@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  /* Primary Colors */
+  --soft-purple: #B5A8D4;
+  --mint-green: #B8E6D5;
+  --dusty-pink: #E8AEB7;
+  --peach: #FFD4A3;
+
+  /* Background Colors */
+  --cream: #F5F1E8;
+  --light-gray: #E8E8E8;
+
+  /* Accent & Text */
+  --coral: #FF7F7F;
+  --dark-purple: #6B5B95;
+  --dark-gray: #4A4A4A;
+
+  /* Additional Pastels */
+  --lavender: #D4C5E2;
+  --soft-blue: #A8C5DD;
+  --butter-yellow: #F5E6C8;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-out;
+  --transition-base: 250ms ease-out;
+  --transition-slow: 350ms ease-out;
+
+  /* Typography */
+  --text-base: 16px;
+  --text-h1: 48px;
+  --text-h2: 36px;
+  --text-h3: 28px;
+  --text-h4: 22px;
+  --text-small: 14px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-base: 18px;
+    --text-h1: 72px;
+    --text-h2: 56px;
+    --text-h3: 40px;
+    --text-h4: 28px;
+  }
+}
+
+body {
+  background: var(--cream);
+  color: var(--dark-gray);
+  font-family: 'Source Code Pro', monospace;
+  font-size: var(--text-base);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bungee', cursive;
+  color: var(--dark-purple);
+}
+
+.font-heading {
+  font-family: 'Bungee', cursive;
+}
+
+.font-body {
+  font-family: 'Source Code Pro', monospace;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
