@@ -23,11 +23,31 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    let lastScrollY = window.scrollY;
 
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const isMobile = window.innerWidth < 768; // md breakpoint
+
+      // Scroll direction'ı belirle (sadece mobilde)
+      if (isMobile) {
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          // Aşağı scroll ediliyor - navbar arkaplanı göster
+          setIsScrolled(true);
+        } else if (currentScrollY < lastScrollY) {
+          // Yukarı scroll ediliyor - navbar arkaplanını gizle
+          setIsScrolled(false);
+        }
+      } else {
+        // Desktop'ta normal davranış
+        setIsScrolled(currentScrollY > 50);
+      }
+
+      lastScrollY = currentScrollY;
+
+      // Active section'ı belirle
       const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = currentScrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
@@ -56,8 +76,8 @@ export default function Navigation() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          backgroundColor: isScrolled ? "var(--cream)" : "transparent",
-          boxShadow: isScrolled ? "0 4px 0 var(--soft-purple)" : "none",
+          backgroundColor: isScrolled && !isMenuOpen ? "var(--cream)" : "transparent",
+          boxShadow: isScrolled && !isMenuOpen ? "0 4px 0 var(--soft-purple)" : "none",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -157,61 +177,92 @@ export default function Navigation() {
             </li>
           </ul>
 
-          {/* Hamburger Button */}
-          <button
-            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg transition-all"
-            style={{
-              backgroundColor: "var(--soft-purple)",
-              border: "2px solid var(--dark-purple)",
-              boxShadow: "0 3px 0 var(--dark-purple)",
-            }}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            <span
-              className="block w-5 h-0.5 transition-all duration-300"
+          {/* Mobile: 3D/2D Toggle + Hamburger Button */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* 3D/2D Toggle Button (Mobile) */}
+            <div className="flex gap-1 p-0.5 rounded-lg" style={{ backgroundColor: "var(--cream)", border: "2px solid var(--dark-purple)", boxShadow: "2px 2px 0 var(--dark-purple)" }}>
+              <button
+                onClick={() => setViewMode("2d")}
+                className="px-2 py-1 rounded text-xs font-heading uppercase transition-all"
+                style={{
+                  backgroundColor: viewMode === "2d" ? "var(--soft-purple)" : "transparent",
+                  color: viewMode === "2d" ? "white" : "var(--dark-purple)",
+                  border: viewMode === "2d" ? "1px solid var(--dark-purple)" : "1px solid transparent",
+                  fontSize: "10px",
+                }}
+              >
+                2D
+              </button>
+              <button
+                onClick={() => setViewMode("3d")}
+                className="px-2 py-1 rounded text-xs font-heading uppercase transition-all"
+                style={{
+                  backgroundColor: viewMode === "3d" ? "var(--soft-purple)" : "transparent",
+                  color: viewMode === "3d" ? "white" : "var(--dark-purple)",
+                  border: viewMode === "3d" ? "1px solid var(--dark-purple)" : "1px solid transparent",
+                  fontSize: "10px",
+                }}
+              >
+                3D
+              </button>
+            </div>
+
+            {/* Hamburger Button */}
+            <button
+              className="w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg transition-all relative"
               style={{
-                backgroundColor: "white",
-                transform: isMenuOpen
-                  ? "rotate(45deg) translateY(4px)"
-                  : "none",
+                backgroundColor: "var(--soft-purple)",
+                border: "2px solid var(--dark-purple)",
+                boxShadow: "0 3px 0 var(--dark-purple)",
               }}
-            />
-            <span
-              className="block w-5 h-0.5 transition-all duration-300"
-              style={{
-                backgroundColor: "white",
-                opacity: isMenuOpen ? 0 : 1,
-              }}
-            />
-            <span
-              className="block w-5 h-0.5 transition-all duration-300"
-              style={{
-                backgroundColor: "white",
-                transform: isMenuOpen
-                  ? "rotate(-45deg) translateY(-4px)"
-                  : "none",
-              }}
-            />
-          </button>
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              <span
+                className="block w-5 h-0.5 transition-all duration-300 absolute"
+                style={{
+                  backgroundColor: "white",
+                  transform: isMenuOpen
+                    ? "rotate(45deg) translateY(0)"
+                    : "rotate(0) translateY(-6px)",
+                }}
+              />
+              <span
+                className="block w-5 h-0.5 transition-all duration-300"
+                style={{
+                  backgroundColor: "white",
+                  opacity: isMenuOpen ? 0 : 1,
+                }}
+              />
+              <span
+                className="block w-5 h-0.5 transition-all duration-300 absolute"
+                style={{
+                  backgroundColor: "white",
+                  transform: isMenuOpen
+                    ? "rotate(-45deg) translateY(0)"
+                    : "rotate(0) translateY(6px)",
+                }}
+              />
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       <div
-        className="fixed inset-0 z-40 md:hidden transition-all duration-300"
+        className="fixed inset-0 z-40 md:hidden transition-all duration-300 overflow-y-auto"
         style={{
           backgroundColor: "var(--cream)",
           opacity: isMenuOpen ? 1 : 0,
           pointerEvents: isMenuOpen ? "auto" : "none",
         }}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-6">
+        <div className="flex flex-col items-center justify-start min-h-full py-20 px-4 gap-3">
           {navItems.map((item, index) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="px-8 py-4 rounded-xl font-heading text-2xl uppercase tracking-wider transition-all"
+              className="px-6 py-3 rounded-xl font-heading text-lg uppercase tracking-wider transition-all w-full max-w-xs"
               style={{
                 backgroundColor:
                   activeSection === item.id

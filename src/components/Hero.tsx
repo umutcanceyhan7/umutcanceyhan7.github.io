@@ -126,7 +126,7 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <div
-        className="absolute bottom-10 right-10 transform -translate-x-1/2 flex flex-col items-center animate-bounce"
+        className="absolute bottom-10 right-4 md:right-10 md:transform md:-translate-x-1/2 flex flex-col items-center animate-bounce"
         style={{ color: "var(--dark-purple)" }}
       >
         <span className="font-body text-sm mb-2">Scroll</span>

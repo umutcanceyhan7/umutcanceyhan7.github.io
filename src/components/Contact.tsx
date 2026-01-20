@@ -386,7 +386,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col justify-center space-y-8">
+          <div className="flex flex-col justify-start space-y-8">
             {/* Email Card */}
             <div
               className="p-6 rounded-xl"
@@ -411,33 +411,6 @@ export default function Contact() {
               >
                 <span className="text-2xl">✉️</span>
                 me@umutcanceyhan.com
-              </a>
-            </div>
-
-            {/* Phone Card */}
-            <div
-              className="p-6 rounded-xl"
-              style={{
-                backgroundColor: "white",
-                border: "4px solid var(--lavender)",
-                boxShadow: "6px 6px 0 var(--soft-purple)",
-              }}
-            >
-              <h3
-                className="font-heading text-xl mb-3"
-                style={{ color: "var(--dark-purple)" }}
-              >
-                PHONE
-              </h3>
-              <a
-                href="tel:+90 555 882 0727"
-                className="font-body text-lg inline-flex items-center gap-2 transition-colors duration-200"
-                style={{ color: "var(--dark-gray)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--soft-purple)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--dark-gray)")}
-              >
-                <span className="text-2xl">📞</span>
-                +90 (555) 882 0727
               </a>
             </div>
 
