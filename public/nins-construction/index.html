@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0B0D" />
+    <title>NINS — From Blueprint to Reality</title>
+    <meta
+      name="description"
+      content="NINS — a design-build construction studio. From blueprint to reality."
+    />
+    <!-- Fonts (OFL). v1 via Google Fonts CDN; self-host woff2 as an optimization pass. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/nins-construction/assets/index-CqDDwOQg.js"></script>
+    <link rel="modulepreload" crossorigin href="/nins-construction/assets/three-BLc-R7KO.js">
+    <link rel="modulepreload" crossorigin href="/nins-construction/assets/gsap-SFc2wnMY.js">
+    <link rel="stylesheet" crossorigin href="/nins-construction/assets/index-CBnAFvj6.css">
+  </head>
+  <body>
+    <!-- WebGL canvas sits behind everything -->
+    <canvas id="scene"></canvas>
+
+    <!-- DOM overlay layered over the canvas -->
+    <div id="overlay">
+      <!-- Loading screen -->
+      <div id="loader" class="loader">
+        <div class="loader__mark">NINS</div>
+        <div class="loader__bar"><span id="loader-fill" class="loader__fill"></span></div>
+        <div class="loader__pct" id="loader-pct">0%</div>
+      </div>
+
+      <!-- Fixed chrome -->
+      <header class="chrome chrome--top">
+        <a class="wordmark" href="#top" aria-label="NINS home">NINS</a>
+        <nav class="nav" id="nav" aria-label="Sections"></nav>
+      </header>
+
+      <div class="chrome chrome--hint" id="scroll-hint" aria-hidden="true">
+        <span>Scroll to build</span>
+        <span class="chev">↓</span>
+      </div>
+
+      <!-- Cinematic captions pinned per scene (populated by JS) -->
+      <div class="caption" id="caption" aria-live="polite"></div>
+
+      <!-- Late-scene content panels -->
+      <section class="panel panel--portfolio" id="portfolio" aria-label="Selected work"></section>
+      <section class="panel panel--cta" id="cta" aria-label="Contact"></section>
+    </div>
+
+    <!-- Scroll driver: this tall element gives the page its scrollable height -->
+    <div id="scroll-driver" aria-hidden="true"></div>
+
+    <!-- No-WebGL / fallback content is injected by JS if needed -->
+    <noscript>
+      <div style="padding:2rem;color:#eaf2ff;background:#0a0b0d;font-family:sans-serif">
+        NINS — a design-build construction studio. Please enable JavaScript to view the experience.
+      </div>
+    </noscript>
+
+  </body>
+</html>
