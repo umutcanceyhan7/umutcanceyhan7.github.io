@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HALCYON — cinematic dijital tasarım & geliştirme stüdyosu (placeholder portfolyo)" />
+    <title>HALCYON — Digital Studio</title>
+    <script type="module" crossorigin src="/halcyon/assets/index-BPAIjhxp.js"></script>
+    <link rel="stylesheet" crossorigin href="/halcyon/assets/index-BWJCRfqd.css">
+  </head>
+  <body>
+    <!-- ===== Custom cursor (data-cursor sürücülü, 2 katman) ===== -->
+    <div class="cursor cursor--dot" aria-hidden="true"></div>
+    <div class="cursor cursor--ring" aria-hidden="true"><span class="cursor__label"></span></div>
+
+    <!-- ===== Preloader ===== -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <span class="preloader__name">HALCYON</span>
+        <span class="preloader__count"><i id="count">0</i><em>%</em></span>
+      </div>
+      <div class="preloader__bar"><i></i></div>
+    </div>
+
+    <!-- ===== Fixed chrome ===== -->
+    <header class="nav">
+      <a href="#top" class="nav__brand" data-cursor="none">HALCYON<span>®</span></a>
+      <nav class="nav__links">
+        <a href="#works" data-cursor="pointer">Works</a>
+        <a href="#about" data-cursor="pointer">Studio</a>
+        <a href="#contact" data-cursor="pointer">Contact</a>
+      </nav>
+      <span class="nav__loc">Istanbul · 41°N</span>
+    </header>
+
+    <main id="top" class="smooth">
+      <!-- ===== 1) Hero — fullscreen shader ===== -->
+      <section class="hero" data-cursor="none">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero__grid">
+          <h1 class="hero__title">
+            <span class="line"><span>DESIGN</span></span>
+            <span class="line line--accent"><span>ENGINEERED</span></span>
+            <span class="line"><span>FOR MOTION</span></span>
+          </h1>
+          <p class="hero__lead">
+            Interactive digital studio. Markalar için immersive web,
+            gerçek-zamanlı 3D ve scroll-tabanlı deneyimler kurarız.
+          </p>
+        </div>
+        <div class="hero__foot">
+          <span>Est. 2019</span>
+          <span class="hero__scroll" data-cursor="none">scroll to enter <i></i></span>
+          <span>©2026</span>
+        </div>
+      </section>
+
+      <!-- ===== 2) Manifesto — satır reveal ===== -->
+      <section class="manifesto">
+        <p class="manifesto__text">
+          <span class="line"><span>Biz pixel dizmiyoruz.</span></span>
+          <span class="line"><span>Zamanlama, ağırlık ve his ile</span></span>
+          <span class="line"><span>ekranda <mark>hareket</mark> tasarlıyoruz —</span></span>
+          <span class="line"><span>akılda kalan deneyimler.</span></span>
+        </p>
+      </section>
+
+      <!-- ===== 3) Works — pinned scroll-scrub ===== -->
+      <section class="works" id="works">
+        <div class="works__sticky">
+          <div class="works__head">
+            <span class="works__kicker">Selected Works</span>
+            <span class="works__counter"><i id="work-index">01</i> / 04</span>
+          </div>
+          <div class="works__stage" data-cursor="view">
+            <article class="work is-active" style="--c: oklch(0.70 0.19 45)">
+              <div class="work__visual"><span class="work__num">01</span></div>
+              <div class="work__meta">
+                <h2 class="work__title">Amara Braga</h2>
+                <p class="work__tags">Brand · WebGL · 2025</p>
+              </div>
+            </article>
+            <article class="work" style="--c: oklch(0.72 0.15 240)">
+              <div class="work__visual"><span class="work__num">02</span></div>
+              <div class="work__meta">
+                <h2 class="work__title">Credit Nine</h2>
+                <p class="work__tags">Product · Motion · 2025</p>
+              </div>
+            </article>
+            <article class="work" style="--c: oklch(0.75 0.16 155)">
+              <div class="work__visual"><span class="work__num">03</span></div>
+              <div class="work__meta">
+                <h2 class="work__title">Neon Door</h2>
+                <p class="work__tags">Experience · Shader · 2024</p>
+              </div>
+            </article>
+            <article class="work" style="--c: oklch(0.80 0.14 90)">
+              <div class="work__visual"><span class="work__num">04</span></div>
+              <div class="work__meta">
+                <h2 class="work__title">Supply Field</h2>
+                <p class="work__tags">E-commerce · 3D · 2024</p>
+              </div>
+            </article>
+          </div>
+          <div class="works__progress"><i></i></div>
+        </div>
+      </section>
+
+      <!-- ===== 4) Capabilities + marquee ===== -->
+      <section class="caps">
+        <div class="caps__list">
+          <span class="caps__kicker">What we do</span>
+          <ul>
+            <li data-cursor="pointer"><span>01</span> Creative Direction</li>
+            <li data-cursor="pointer"><span>02</span> WebGL &amp; Real-time 3D</li>
+            <li data-cursor="pointer"><span>03</span> Motion &amp; Interaction</li>
+            <li data-cursor="pointer"><span>04</span> Frontend Engineering</li>
+          </ul>
+        </div>
+      </section>
+      <div class="marquee" data-cursor="none">
+        <div class="marquee__track">
+          <span>GSAP</span><span>◦</span><span>Three.js</span><span>◦</span><span>Lenis</span><span>◦</span>
+          <span>GLSL</span><span>◦</span><span>WebGPU</span><span>◦</span><span>Motion</span><span>◦</span>
+        </div>
+      </div>
+
+      <!-- ===== 5) About ===== -->
+      <section class="about" id="about">
+        <span class="about__kicker">The Studio</span>
+        <p class="about__body">
+          Istanbul merkezli, <strong>7 kişilik</strong> bağımsız bir dijital
+          stüdyo. 2019’dan bu yana <strong>40+</strong> projeyi tasarımdan
+          production’a taşıdık; işlerimiz Awwwards ve FWA’da
+          <strong>12 kez</strong> ödüllendirildi. Küçük ekip, yüksek özen.
+        </p>
+      </section>
+
+      <!-- ===== 6) Contact CTA ===== -->
+      <section class="contact" id="contact">
+        <span class="contact__kicker">Have a project?</span>
+        <a class="contact__cta" href="mailto:hello@halcyon.studio" data-cursor="pointer">
+          Start a project
+        </a>
+        <div class="contact__row">
+          <a href="mailto:hello@halcyon.studio" data-cursor="pointer">hello@halcyon.studio</a>
+          <a href="#" data-cursor="pointer">Instagram</a>
+          <a href="#" data-cursor="pointer">Awwwards</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>HALCYON® Studio</span>
+        <span>Placeholder portfolyo — cappen.com teknikleri</span>
+        <span>Istanbul · 2026</span>
+      </footer>
+    </main>
+
+  </body>
+</html>
