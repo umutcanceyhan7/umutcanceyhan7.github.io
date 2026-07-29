@@ -94,7 +94,6 @@ var El=Object.defineProperty;var Ol=(s,e,i)=>e in s?El(s,e,{enumerable:!0,config
       <div class="shead"><div><div class="idx mono" data-reveal>05 — Trust</div><h2 data-reveal>What clients say</h2></div>
         <p data-reveal>Real Bionluk reviews · 5.0 average across 6 orders.</p></div>
       <div class="quotes">${Pc.map(e=>`<div class="quote" data-reveal><div class="stars">★★★★★</div><p>“${e[0]}”</p><div class="who">${e[1]}</div></div>`).join("")}</div>
-      <div class="note">◦ Verbatim from bionluk.com/ninsagency · get client consent before showing usernames publicly.</div>
     </section>
 
     <section id="contact" class="contact wrap">
