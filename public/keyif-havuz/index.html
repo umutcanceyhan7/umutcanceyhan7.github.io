@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Keyif Havuz — Before / After (Konsept)</title>
+<style>
+:root{
+  --ground:#0B0A09; --ground-2:#131110; --card:#181513; --line:#2A2521;
+  --ink:#F2EDE4; --muted:#95897D; --faint:#5E564E;
+  --ember:#FF5B23; --ember-soft:#FF7A4D; --gold:#C9A24B;
+  --sans:"Helvetica Neue",Arial,ui-sans-serif,system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;
+  --maxw:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:28px;padding-right:28px}
+.mono{font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.ember{color:var(--ember)}
+
+/* top identity bar — standalone preview, not the portfolio shell */
+.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;height:auto;min-height:64px;padding:14px 28px;
+  background:linear-gradient(180deg,rgba(11,10,9,.97),rgba(11,10,9,.86));
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar .id{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.topbar .id b{font-size:15px;letter-spacing:-.01em}
+.topbar .id span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.flag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#0B0A09;background:var(--ember);padding:6px 11px;border-radius:2px;font-weight:700;white-space:nowrap}
+.topbar a.livelink{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);padding:9px 14px;border-radius:2px;transition:.2s;white-space:nowrap}
+.topbar a.livelink:hover{color:var(--ink);border-color:var(--muted)}
+
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  padding:15px 26px;border-radius:2px;cursor:pointer;border:1px solid var(--line);
+  background:transparent;color:var(--ink);transition:.2s;display:inline-block}
+.btn.primary{background:var(--ember);border-color:var(--ember);color:#0B0A09;font-weight:700}
+.btn.primary:hover{background:var(--ember-soft);border-color:var(--ember-soft)}
+.btn:hover{border-color:var(--muted)}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);padding:3px 7px;border-radius:2px}
+
+.ohero{padding:56px 0 40px}
+.ohero .cat{margin-bottom:20px}
+.ohero h1{font-size:clamp(38px,7vw,86px);line-height:.95;letter-spacing:-.03em;font-weight:800;margin:0 0 18px;text-wrap:balance}
+.ohero .lead{font-size:clamp(16px,2.2vw,21px);color:var(--muted);max-width:60ch}
+.obanner{aspect-ratio:21/8;border-radius:6px;overflow:hidden;position:relative;margin:20px 0 10px;border:1px solid var(--line)}
+.obanner img{width:100%;height:100%;object-fit:cover;display:block}
+.obanner.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.ogrid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;padding:56px 0;border-top:1px solid var(--line)}
+@media(max-width:820px){.ogrid{grid-template-columns:1fr;gap:28px}}
+.block h5{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);margin:0 0 14px}
+.block p{color:var(--ink);font-size:16px;margin:0 0 14px;max-width:60ch}
+.block ul{margin:0;padding:0;list-style:none}
+.block li{padding:11px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;gap:10px}
+.block li::before{content:"\2192";color:var(--ember)}
+.stacklist{display:flex;flex-wrap:wrap;gap:8px}
+.stacklist .tag{font-size:11px;padding:6px 10px}
+.resultgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:40px 0}
+@media(max-width:600px){.resultgrid{grid-template-columns:1fr}}
+.rcard{border:1px solid var(--line);border-radius:4px;padding:22px;background:var(--card)}
+.rcard .rn{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.rcard .rl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.olive{display:flex;gap:14px;padding:0 0 90px;flex-wrap:wrap;align-items:center}
+.olive .note{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.08em;max-width:48ch}
+
+/* before / after slider */
+.cmps{display:grid;gap:34px;padding:8px 0 26px}
+.cmp{margin:0}
+.cmp-frame{position:relative;aspect-ratio:16/10;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  background:var(--card);cursor:ew-resize;touch-action:pan-y;user-select:none}
+.cmp-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.cmp-clip{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.cmp-tag{position:absolute;bottom:12px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 9px;border-radius:2px;background:rgba(11,10,9,.72);color:var(--ink);z-index:3;pointer-events:none}
+.cmp-tag.left{left:12px}
+.cmp-tag.right{right:12px;background:var(--ember);color:#0B0A09}
+.cmp-handle{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:var(--ember);z-index:4;
+  transform:translateX(-1px);cursor:ew-resize}
+.cmp-handle span{position:absolute;top:50%;left:50%;width:38px;height:38px;transform:translate(-50%,-50%);
+  border-radius:50%;background:var(--ember);border:2px solid #0B0A09;display:block}
+.cmp-handle span::before,.cmp-handle span::after{content:"";position:absolute;top:50%;width:0;height:0;
+  border-top:5px solid transparent;border-bottom:5px solid transparent;margin-top:-5px}
+.cmp-handle span::before{left:8px;border-right:6px solid #0B0A09}
+.cmp-handle span::after{right:8px;border-left:6px solid #0B0A09}
+.cmp-handle:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.cmp figcaption{color:var(--muted);font-size:14px;margin-top:14px;max-width:78ch;line-height:1.6}
+.cmp figcaption b{color:var(--ink);font-weight:700;margin-right:8px}
+
+/* recorded interaction loops */
+.reels{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding:8px 0 40px}
+@media(max-width:820px){.reels{grid-template-columns:1fr}}
+.reel-item{margin:0}
+.reel-item video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border:1px solid var(--line);border-radius:6px;background:#000}
+.reel-item figcaption{color:var(--muted);font-size:13px;margin-top:12px;line-height:1.6;max-width:64ch}
+.reel-item figcaption b{color:var(--ink);font-weight:700;margin-right:8px}
+
+footer.foot{border-top:1px solid var(--line);padding:34px 28px;color:var(--faint);font-family:var(--mono);
+  font-size:11px;letter-spacing:.1em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:var(--maxw);margin:0 auto}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="id"><b>KEYİF HAVUZ</b><span>Before / After Çalışması</span></div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <span class="flag">Konsept — yayında değil</span>
+    <a class="livelink" href="https://www.keyifhavuz.com.tr" target="_blank" rel="noopener">Canlı site (önce) ↗</a>
+  </div>
+</div>
+
+<div class="ohero wrap">
+  <div class="cat mono ember">Redesign Konsepti · Havuz Sektörü</div>
+  <h1>Keyif Havuz</h1>
+  <p class="lead">Keyif Havuz 1996'dan beri Bursa'da havuz yapıyor, periyodik bakımını üstleniyor ve havuz ekipmanı satıyor — otuz yıla yakın gerçek bir iş. Ama site üç işten hiçbirini net anlatmıyor, ve en kritik bulgu: menüdeki on ekipman sayfasının hepsi sıfır ürün gösteriyor, oysa site altında 74 ürünlük çalışan bir katalog duruyor. Bu, o reviewdan çıkan tasarım konsepti — henüz teklif aşamasında, yayına alınmadı.</p>
+</div>
+
+<div class="wrap">
+  <div class="obanner reel">
+    <video src="video/katalog.mp4" poster="video/poster_katalog.jpg" autoplay muted loop playsinline></video>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="ogrid">
+    <div class="block">
+      <h5>Sorun</h5>
+      <p>Sorun estetikte değil — tipografi okunaklı, marka mavisi tutarlı, fotoğraflar gerçek işlerden. Sorun bilgi mimarisinde: menüdeki "Havuz Ekipmanları" altındaki 10 sayfanın hepsi WooCommerce kategori arşivi değil, hiç doldurulmamış WPBakery sayfaları. Gerçek 74 ürünlük katalog <code>/urun-kategori/</code> altında çalışıyor ama sitenin hiçbir yerinden oraya link verilmiyor — mağaza ayakta, sadece ulaşılamıyor.</p>
+      <p>İkinci katman: her sayfa, içeriği ne olursa olsun ortalama 636 KB CSS+JS indiriyor — sıfır ürün gösteren kategori sayfası bile. Üçüncüsü bakımsızlık sinyalleri: tema demosundan kalma anlamsız %20/%80 ilerleme çubukları, yalnızca placeholder ile etiketlenmiş form alanları, "Copyright 2023" footer. Brief kendimce şuydu: markayı (mavi palet, mevcut logo, mevcut fotoğraf arşivi) koru; bilgi mimarisini, kart/buton dilini ve kod yükünü düzelt.</p>
+    </div>
+    <div class="block">
+      <h5>Süreç</h5>
+      <ul>
+        <li>Review önce yazıldı: 12 bölüm, her bulgu ölçülmüş gerekçesiyle</li>
+        <li>Menü planı: boş 10 sayfa yerine gerçek /urun-kategori/ bağlantıları, 301 yönlendirme</li>
+        <li>Tasarım tokenleri: renk, tipografi ölçeği, 8px boşluk, tek buton + kart anatomisi</li>
+        <li>Hero ve hizmet kartları yeniden kuruldu: üç iş tek başlıkta, linkli kartlar, tek birincil CTA</li>
+        <li>İlerleme çubukları kaldırıldı; gerçek 5 adımlık süreç anlatısına çevrildi</li>
+        <li>İletişim formu: görünür etiket, doğru zorunluluk, tembel yüklenen harita</li>
+      </ul>
+      <h5 style="margin-top:26px">Bu mockup'ın yapımı</h5>
+      <div class="stacklist">
+        <span class="tag">Statik HTML/CSS</span><span class="tag">Build step yok</span>
+        <span class="tag">Tasarım token sistemi</span><span class="tag">8px boşluk ölçeği</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block"><h5>Before / After</h5><p>Sol taraf canlı <code>keyifhavuz.com.tr</code>'den, 3 Ekim 2026'da yakalandı. Sağ taraf <b>deploy edilmemiş bir konsept</b> — lokalde statik olarak servis ediliyor. Aynı sayfa, aynı 1512×945 viewport, aynı kırpma. Tutamacı sürükle.</p></div>
+
+  <div class="cmps">
+    <figure class="cmp" data-cmp>
+      <div class="cmp-frame" style="--x:50%">
+        <img class="cmp-after" src="frontend-design/images/pairs/hero_after.jpg" alt="Header ve hero, Konsept" loading="lazy">
+        <div class="cmp-clip"><img class="cmp-before" src="frontend-design/images/pairs/hero_before.jpg" alt="Header ve hero, Önce" loading="lazy"></div>
+        <span class="cmp-tag left">Önce</span><span class="cmp-tag right">Konsept</span>
+        <div class="cmp-handle" role="slider" tabindex="0" aria-label="Header ve hero önce ve sonra" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span></span></div>
+      </div>
+      <figcaption><b>Header & hero</b> İki katlı header hero'yu 211px aşağı itiyordu ve ilk ekranın üstten dörtte biri navigasyona gidiyordu; altındaki hero tek bir diyagonal overlay ve "periyodik bakım" mesajıyla üç işten yalnızca birini anlatıyordu, iki buton eşit ağırlıkta görünüyordu. Rebuild tek satır header + sabit birincil CTA kullanıyor, başlığı üç işi kapsayacak şekilde yeniden yazıyor, ve altına üç yol kartı + üç güven rozeti + firmanın kendi yayınladığı 1996 / 178 / 8 / 9 rakamlarını (kuruluş yılı, tamamlanan proje, şehir, personel) ekliyor — bu rakamlar sitenin Hakkımızda sayfasında 1700px aşağıda, kimsenin görmediği bir sayaçta duruyor.</figcaption>
+    </figure>
+
+    <figure class="cmp" data-cmp>
+      <div class="cmp-frame" style="--x:50%">
+        <img class="cmp-after" src="frontend-design/images/pairs/hizmetler_after.jpg" alt="Hizmet kartları, Konsept" loading="lazy">
+        <div class="cmp-clip"><img class="cmp-before" src="frontend-design/images/pairs/hizmetler_before.jpg" alt="Hizmet kartları, Önce" loading="lazy"></div>
+        <span class="cmp-tag left">Önce</span><span class="cmp-tag right">Konsept</span>
+        <div class="cmp-handle" role="slider" tabindex="0" aria-label="Hizmet kartları önce ve sonra" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span></span></div>
+      </div>
+      <figcaption><b>Hizmet kartları</b> Dört karttan ilki keyfi biçimde lacivert dolgulu, diğer üçü beyazdı — "en popüler" gibi bir gerekçe yoktu — ve dördünün de başlığı bir <code>&lt;a&gt;</code> içinde değildi, yani hiçbiri tıklanıp hedef sayfaya gitmiyordu. Rebuild dört kartı aynı anatomiye indiriyor, her birine gerçek bir hedef sayfa veriyor ve somut bir ikincil bilgi ekliyor ("74 ürün", "Sezonda 48 saat içinde").</figcaption>
+    </figure>
+
+    <figure class="cmp" data-cmp>
+      <div class="cmp-frame" style="--x:50%">
+        <img class="cmp-after" src="frontend-design/images/pairs/surec_after.jpg" alt="Süreç bölümü, Konsept" loading="lazy">
+        <div class="cmp-clip"><img class="cmp-before" src="frontend-design/images/pairs/surec_before.jpg" alt="Süreç bölümü, Önce" loading="lazy"></div>
+        <span class="cmp-tag left">Önce</span><span class="cmp-tag right">Konsept</span>
+        <div class="cmp-handle" role="slider" tabindex="0" aria-label="Süreç bölümü önce ve sonra" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span></span></div>
+      </div>
+      <figcaption><b>Süreç</b> "Keşif %20 / Projelendirme %80" iki ilerleme çubuğu neyin yüzdesi olduğunu hiç açıklamıyordu — tema demosundan kalma, içeriği hiç değiştirilmemiş bir widget, yanındaki lacivert panel ise boş. Rebuild bunu beş gerçek adıma çeviriyor (Keşif → Projelendirme → İmalat → Devreye Alma → Bakım), her adımda ne yapıldığını ve ne kadar sürdüğünü söylüyor.</figcaption>
+    </figure>
+
+    <figure class="cmp" data-cmp>
+      <div class="cmp-frame" style="--x:50%">
+        <img class="cmp-after" src="frontend-design/images/pairs/kategori_after.jpg" alt="Ürün kategorisi, Konsept" loading="lazy">
+        <div class="cmp-clip"><img class="cmp-before" src="frontend-design/images/pairs/kategori_before.jpg" alt="Ürün kategorisi, Önce" loading="lazy"></div>
+        <span class="cmp-tag left">Önce</span><span class="cmp-tag right">Konsept</span>
+        <div class="cmp-handle" role="slider" tabindex="0" aria-label="Ürün kategorisi önce ve sonra" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span></span></div>
+      </div>
+      <figcaption><b>Ürün kategorisi</b> En kritik bulgu burada: menüden "Havuz Kimyasalları"na tıklayan ziyaretçi 0 ürün görüyor — "bu kategoride ürün yok" mesajı bile yok, çünkü sayfa hiç doldurulmamış bir WPBakery sayfası, gerçek WooCommerce kategorisi değil. Rebuild aynı isim altında gerçek 12 ürünü, stok rozetlerini ve filtre pillerini gösteriyor; aynı URL, farklı veri kaynağı.</figcaption>
+    </figure>
+
+    <figure class="cmp" data-cmp>
+      <div class="cmp-frame" style="--x:50%">
+        <img class="cmp-after" src="frontend-design/images/pairs/projeler_after.jpg" alt="Proje galerisi, Konsept" loading="lazy">
+        <div class="cmp-clip"><img class="cmp-before" src="frontend-design/images/pairs/projeler_before.jpg" alt="Proje galerisi, Önce" loading="lazy"></div>
+        <span class="cmp-tag left">Önce</span><span class="cmp-tag right">Konsept</span>
+        <div class="cmp-handle" role="slider" tabindex="0" aria-label="Proje galerisi önce ve sonra" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span></span></div>
+      </div>
+      <figcaption><b>Proje galerisi</b> 26 fotoğraflık ızgarada üç farklı en-boy oranı (dikey, yatay, panorama) yan yana duruyordu, hiçbirinin proje adı, konumu ya da ölçüsü yoktu — 28 görselin 25'inde <code>alt</code> metni de yoktu. Bu, firmanın en güçlü varlığı olmasına rağmen bir "galeri"den öteye geçmiyordu. Rebuild her fotoğrafı ilçe, şehir, havuz tipi ve ölçü taşıyan bir proje kartına çeviriyor, tek 4:3 orana oturtuyor ve havuz tipine göre filtrelenebilir hale getiriyor.</figcaption>
+    </figure>
+
+    <figure class="cmp" data-cmp>
+      <div class="cmp-frame" style="--x:50%">
+        <img class="cmp-after" src="frontend-design/images/pairs/iletisim_after.jpg" alt="İletişim formu, Konsept" loading="lazy">
+        <div class="cmp-clip"><img class="cmp-before" src="frontend-design/images/pairs/iletisim_before.jpg" alt="İletişim formu, Önce" loading="lazy"></div>
+        <span class="cmp-tag left">Önce</span><span class="cmp-tag right">Konsept</span>
+        <div class="cmp-handle" role="slider" tabindex="0" aria-label="İletişim formu önce ve sonra" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span></span></div>
+      </div>
+      <figcaption><b>İletişim</b> Form alanları yalnızca placeholder ile etiketlenmişti — görünür <code>&lt;label&gt;</code> yok, yazmaya başlayınca alanın ne istediği unutuluyordu — ve yalnızca "Proje Detayları" zorunlu işaretliydi; ad ve telefon değildi. Sayfa ayrıca 49 script ve 784 KB JS yüklüyordu, çoğu harita ve form eklentisinden. Rebuild görünür etiketler kullanıyor, ad ve telefonu zorunlu yapıyor, e-postayı opsiyonel bırakıyor, ve haritayı yalnızca tıklanınca yükleniyor hale getiriyor.</figcaption>
+    </figure>
+  </div>
+
+  <div class="block"><h5>Sonuç</h5></div>
+  <div class="resultgrid">
+    <div class="rcard"><div class="rn">636 KB → 21 KB</div><div class="rl">Sayfa başına ortalama CSS+JS</div></div>
+    <div class="rcard"><div class="rn">83 → 13</div><div class="rl">Sayfa başına ortalama istek</div></div>
+    <div class="rcard"><div class="rn">0 → 12</div><div class="rl">"Havuz Kimyasalları" kategorisinde listelenen ürün</div></div>
+    <div class="rcard"><div class="rn">25 → 0</div><div class="rl">Havuz tipi sayfasında alt metni olmayan görsel</div></div>
+  </div>
+
+  <div class="block"><h5>Hareket halinde</h5><p>Redesign mockup'tan (lokalde, <code>python3 -m http.server</code>) kaydedildi. Kesinti yok, hızlandırma yok. Mockup'ın arkasında gerçek bir backend olmadığı için "Haritayı Yükle" tıklanınca gerçek Google Haritalar yerine aynı statik görsel kalıyor — üretim entegrasyonunda gerçek harita yüklenecek.</p></div>
+  <div class="reels">
+    <figure class="reel-item">
+      <video src="video/katalog.mp4" poster="video/poster_katalog.jpg" muted loop playsinline preload="none" data-lazyreel></video>
+      <figcaption><b>Dolu bir kategori</b> "Havuz Kimyasalları" artık 12 ürünü stok rozetleriyle gösteriyor, filtre pilleri (Tümü / Stokta / Sipariş üzerine) arasında geçiş yapılabiliyor — önce tarafında bu sayfa tamamen boştu.</figcaption>
+    </figure>
+    <figure class="reel-item">
+      <video src="video/form.mp4" poster="video/poster_form.jpg" muted loop playsinline preload="none" data-lazyreel></video>
+      <figcaption><b>Form + tembel harita</b> Ad, telefon ve proje detayı görünür etiketlerle dolduruluyor; harita yalnızca "Haritayı Yükle" tıklanınca talep ediliyor, ilk yüklemede ağırlık taşımıyor.</figcaption>
+    </figure>
+  </div>
+
+  <div class="olive">
+    <a class="btn primary" href="https://www.keyifhavuz.com.tr" target="_blank" rel="noopener">Canlı siteyi gör (önce) ↗</a>
+    <span class="olive note">Konsept tarafı henüz yayında değil — bu bir teklif/pitch hazırlığı. Dönüşüm oranı, talep sayısı ve mobil trafik oranı dışarıdan ölçülemediği için bu sayfada yok; firmadan alınırsa eklenecek, uydurulmayacak.</span>
+  </div>
+</div>
+
+<footer class="foot"><span>© 2026 Umutcan Ceyhan</span><span>Önizleme — henüz portfolyoya eklenmedi</span></footer>
+
+<script>
+function initCompare(root) {
+  root.querySelectorAll('[data-cmp]').forEach((fig) => {
+    const frame = fig.querySelector('.cmp-frame');
+    const handle = fig.querySelector('.cmp-handle');
+    const set = (pct) => {
+      const v = Math.max(0, Math.min(100, pct));
+      frame.style.setProperty('--x', v + '%');
+      handle.setAttribute('aria-valuenow', Math.round(v));
+    };
+    const fromEvent = (e) => {
+      const r = frame.getBoundingClientRect();
+      set(((e.clientX - r.left) / r.width) * 100);
+    };
+    let dragging = false;
+    frame.addEventListener('pointerdown', (e) => {
+      dragging = true; frame.setPointerCapture(e.pointerId); fromEvent(e); e.preventDefault();
+    });
+    frame.addEventListener('pointermove', (e) => { if (dragging) fromEvent(e); });
+    frame.addEventListener('pointerup', (e) => { dragging = false; frame.releasePointerCapture(e.pointerId); });
+    frame.addEventListener('pointercancel', () => { dragging = false; });
+    handle.addEventListener('keydown', (e) => {
+      const step = e.shiftKey ? 10 : 2;
+      const now = Number(handle.getAttribute('aria-valuenow'));
+      if (e.key === 'ArrowLeft') { set(now - step); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { set(now + step); e.preventDefault(); }
+    });
+  });
+}
+
+function initReels(root) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    root.querySelectorAll('video').forEach((v) => { v.autoplay = false; v.pause(); });
+    return;
+  }
+  const vids = [...root.querySelectorAll('[data-lazyreel]')];
+  if (!vids.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      const v = en.target;
+      if (en.isIntersecting) {
+        if (v.preload === 'none') { v.preload = 'auto'; v.load(); }
+        v.play().catch(() => {});
+      } else v.pause();
+    });
+  }, { rootMargin: '150px 0px', threshold: 0.25 });
+  vids.forEach((v) => io.observe(v));
+}
+
+initCompare(document);
+initReels(document);
+</script>
+</body>
+</html>
