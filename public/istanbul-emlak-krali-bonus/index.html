@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#122b36">
+<title>İstanbul Emlak Kralı · Deneme APK</title>
+<style>
+  :root{color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#122b36;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1b2a30;padding:16px}
+  form{background:#f5f4ef;border-radius:16px;padding:28px 24px;width:100%;max-width:360px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  h1{font-size:20px;margin:0 0 4px}
+  p{margin:0 0 18px;color:#5b6b72;font-size:14px}
+  label{display:block;font-size:13px;font-weight:600;margin:12px 0 6px}
+  input{width:100%;padding:12px;border:1px solid #c9d1d4;border-radius:10px;font-size:16px;background:#fff}
+  input:focus{outline:2px solid #1f8a70;border-color:transparent}
+  button{width:100%;margin-top:18px;padding:13px;border:0;border-radius:10px;background:#1f8a70;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+  button:disabled{opacity:.6;cursor:wait}
+  .err{color:#b3261e;font-size:13px;min-height:18px;margin-top:10px}
+  noscript{display:block;background:#fff3cd;color:#664d03;padding:12px;border-radius:10px;font-size:14px;margin-top:12px}
+  .loading{color:#f5f4ef;font-size:16px}
+</style>
+</head>
+<body>
+<form id="gate" autocomplete="on">
+  <h1>İstanbul Emlak Kralı</h1>
+  <p>Deneme APK'sını indirmek için e-posta ve şifreni gir.</p>
+  <label for="email">E-posta</label>
+  <input id="email" name="email" type="email" autocomplete="username" required>
+  <label for="password">Şifre</label>
+  <input id="password" name="password" type="password" autocomplete="current-password" required>
+  <button id="btn" type="submit">Giriş yap</button>
+  <div class="err" id="err"></div>
+  <noscript>Bu sayfa JavaScript olmadan açılamaz. Oyun verisi şifrelidir; şifre çözme tarayıcıda yapılır.</noscript>
+</form>
+<script>if(location.hostname.indexOf('www.')===0){location.replace(location.protocol+'//'+location.hostname.slice(4)+location.pathname+location.search+location.hash);}</script>
+<script id="payload" type="application/json">{"v":1,"iter":310000,"salt":"2T8aRmVIb7y1eJ9F6VcxYQ==","iv":"WrcEffETQJWWq/fR","ct":"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"}</script>
+<script>
+(function(){
+  var P = JSON.parse(document.getElementById('payload').textContent);
+  var b64 = function(s){ var b = atob(s), a = new Uint8Array(b.length); for (var i=0;i<b.length;i++) a[i]=b.charCodeAt(i); return a; };
+  var enc = new TextEncoder(), dec = new TextDecoder();
+  var KEY_STORE = 'iek-gate-key';
+
+  function deriveKey(email, password){
+    var material = enc.encode(email.trim().toLowerCase() + '\u0000' + password);
+    return crypto.subtle.importKey('raw', material, 'PBKDF2', false, ['deriveKey']).then(function(k){
+      return crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(P.salt), iterations:P.iter, hash:'SHA-256'}, k, {name:'AES-GCM', length:256}, true, ['decrypt']);
+    });
+  }
+  function decryptWith(key){
+    return crypto.subtle.decrypt({name:'AES-GCM', iv:b64(P.iv)}, key, b64(P.ct)).then(function(buf){ return dec.decode(buf); });
+  }
+  function launch(html){
+    document.open(); document.write(html); document.close();
+  }
+  // Anahtarı hem localStorage'a hem çereze yaz (1 yıl). Biri silinse de diğeri kalır.
+  function remember(key){
+    return crypto.subtle.exportKey('raw', key).then(function(raw){
+      var v = btoa(String.fromCharCode.apply(null, new Uint8Array(raw)));
+      try { localStorage.setItem(KEY_STORE, v); } catch(e){}
+      try { document.cookie = KEY_STORE + '=' + encodeURIComponent(v) + '; max-age=31536000; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : ''); } catch(e){}
+    }).catch(function(){});
+  }
+  function readSaved(){
+    var v = null;
+    try { v = localStorage.getItem(KEY_STORE); } catch(e){}
+    if (!v) { var m = document.cookie.match(new RegExp('(?:^|; )' + KEY_STORE + '=([^;]*)')); if (m) v = decodeURIComponent(m[1]); }
+    return v;
+  }
+  function forget(){
+    try { localStorage.removeItem(KEY_STORE); } catch(e){}
+    try { document.cookie = KEY_STORE + '=; max-age=0; path=/'; } catch(e){}
+  }
+
+  // Daha önce giriş yapıldıysa otomatik aç
+  try {
+    var saved = readSaved();
+    if (saved) {
+      crypto.subtle.importKey('raw', b64(saved), {name:'AES-GCM'}, true, ['decrypt'])
+        .then(function(key){ return decryptWith(key).then(function(html){ return remember(key).then(function(){ launch(html); }); }); })
+        .catch(forget);
+    }
+  } catch(e){}
+
+  document.getElementById('gate').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var btn = document.getElementById('btn'), err = document.getElementById('err');
+    btn.disabled = true; err.textContent = ''; btn.textContent = 'Kontrol ediliyor…';
+    var email = document.getElementById('email').value, pw = document.getElementById('password').value;
+    deriveKey(email, pw).then(function(key){
+      return decryptWith(key).then(function(html){ return remember(key).then(function(){ launch(html); }); });
+    }).catch(function(){
+      err.textContent = 'E-posta veya şifre yanlış.';
+      btn.disabled = false; btn.textContent = 'Giriş yap';
+    });
+  });
+})();
+</script>
+</body>
+</html>
