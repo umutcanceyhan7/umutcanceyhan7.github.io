@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useViewMode } from "@/contexts/ViewModeContext";
 
 const navItems = [
@@ -21,6 +22,7 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -69,6 +71,9 @@ export default function Navigation() {
     }
     setIsMenuOpen(false);
   };
+
+  // Müşteri Defteri kendi başlığını kullanır.
+  if (pathname?.startsWith("/customer-list")) return null;
 
   return (
     <>
